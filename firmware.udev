@@ -1,0 +1,2 @@
+# set the hs and fs product string to "Thing"
+SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{product}=="Thing", SYMLINK="thing", MODE="0666"
