@@ -35,4 +35,4 @@ RUN git clone https://github.com/TWALL9/otomo_plugins.git otomo2_ws/src/otomo_pl
 RUN git clone https://github.com/TWALL9/otomo_webserver.git otomo2_ws/src/otomo_webserver
 RUN git clone https://github.com/TWALL9/async_serial.git otomo2_ws/src/async_serial
 
-RUN apt install -y vim
+RUN apt install -y vim ros-foxy-twist-mux
