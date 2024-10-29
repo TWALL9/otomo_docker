@@ -17,14 +17,19 @@ RUN apt-get update && apt-get install -y \
     ros-foxy-slam-toolbox \
     ros-foxy-navigation2 \
     ros-foxy-nav2-bringup \
+    ros-foxy-realsense2-camera \
+    ros-foxy-librealsense2 \
+    ros-foxy-twist-mux \
+    vim \
     protobuf-compiler \
     libboost-all-dev \
     udev \
+    usbutils \
     python3-pip
 
 RUN python3 -m pip install flask
 
-COPY firmware.udev /etc/udev/rules.d/80-firmware.rules
+COPY 80-st-board.rules /etc/udev/rules.d/80-st-board.rules
 
 RUN mkdir -p otomo2_ws/src
 RUN git clone https://github.com/TWALL9/otomo_msgs.git otomo2_ws/src/otomo_msgs
@@ -35,4 +40,3 @@ RUN git clone https://github.com/TWALL9/otomo_plugins.git otomo2_ws/src/otomo_pl
 RUN git clone https://github.com/TWALL9/otomo_webserver.git otomo2_ws/src/otomo_webserver
 RUN git clone https://github.com/TWALL9/async_serial.git otomo2_ws/src/async_serial
 
-RUN apt install -y vim ros-foxy-twist-mux
