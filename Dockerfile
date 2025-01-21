@@ -32,11 +32,12 @@ RUN apt-get update && apt-get install -y \
 
 COPY 80-st-board.rules /etc/udev/rules.d/80-st-board.rules
 
-RUN mkdir -p otomo2_ws/src
-RUN git clone https://github.com/TWALL9/otomo_msgs.git otomo2_ws/src/otomo_msgs
-RUN cd otomo2_ws/src/otomo_msgs && git submodule update --init && cd /
-RUN git clone https://github.com/TWALL9/otomo_control.git otomo2_ws/src/otomo_control
-RUN git clone https://github.com/TWALL9/otomo_core.git otomo2_ws/src/otomo_core
-RUN git clone https://github.com/TWALL9/otomo_plugins.git otomo2_ws/src/otomo_plugins
-RUN git clone https://github.com/TWALL9/async_serial.git otomo2_ws/src/async_serial
-RUN git clone https://github.com/ros-teleop/twist_mux.git otomo2_ws/src/twist_mux
+WORKDIR /otomo2_ws/src
+RUN git clone https://github.com/TWALL9/otomo_msgs.git --recurse-submodules
+RUN git clone https://github.com/TWALL9/otomo_control.git
+RUN git clone https://github.com/TWALL9/otomo_core.git
+RUN git clone https://github.com/TWALL9/otomo_plugins.git
+RUN git clone https://github.com/TWALL9/async_serial.git
+RUN git clone https://github.com/ros-teleop/twist_mux.git
+
+WORKDIR /otomo2_ws

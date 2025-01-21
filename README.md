@@ -12,3 +12,18 @@ rosdep install --from-paths src -y --ignore-src
 ```
 
 # running docker
+to build the image
+```bash
+docker build . -t jazzy_img
+```
+
+to run the image
+```bash
+docker run -it --privileged -v /dev:/dev --net=host --name jazzy_ws jazzy_img
+```
+
+to run it again
+```bash
+docker start jazzy_ws
+docker attach jazzy_ws
+```
